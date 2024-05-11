@@ -49,6 +49,18 @@ app.post('/gallery', async (req, res) => {
   }
 });
 
+app.delete('/gallery',async(req,res)=>{
+  try{
+    const { id } = req.body;
+    const delectedpic = await picture.findByIdAndDelete(id);
+    res.send("Deleted Successfully");
+    console.log("Deleted successfully")
+  } catch(error) {
+    console.log("unsucessful")
+    console.log(error);
+  }
+})
+
 app.listen(8080, () => {
   console.log('Server started on port 8080');
 });
